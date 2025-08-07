@@ -1,0 +1,9 @@
+pandas
+numpy
+scikit-learn==1.4.2
+psutil
+requests
+fastapi
+uvicorn[standard]
+python-dotenv
+google-generativeai
