@@ -2,6 +2,9 @@
 
 Cross‑platform battery–health dashboard powered by a Random‑Forest model, FastAPI, and a React front‑end.
 
+![Dashboard Preview](https://github.com/TanushriS/assets/blob/main/Thermosense_working.png)
+
+
 | OS                | Back‑end runs | Sensor data available | Front‑end runs |
 |-------------------|--------------|-----------------------|----------------|
 | **macOS (Apple/Intel)** | **Native** (Python 3.11) | Battery °C (via `ioreg`), Thermal‑pressure (`powermetrics`) | Docker (Nginx) |
@@ -140,5 +143,6 @@ git push -u origin main
 * **macOS** requires `sudo` for `powermetrics`. You can add a `NOPASSWD` line in `/etc/sudoers` for password‑less startup if desired.
 * **Windows** CPU‑temp depends on motherboard sensors being exposed via WMI. If they're unsupported, the dashboard gracefully falls back to ambient temperature.
 * The front‑end reads the `REACT_APP_API_ROOT` environment variable at build time. The `docker-compose.yml` file sets this to `http://localhost:8000`.
+
 
 Enjoy your portable, sensor‑aware ThermoSense dashboard! 🚀
