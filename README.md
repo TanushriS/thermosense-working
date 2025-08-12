@@ -76,6 +76,11 @@ pip install --upgrade pip
 pip install -r backend\requirements.txt
 pip install wmi            # optional CPU‑temp
 
+# Install OpenHardwareMonitor (alternative to WMI)
+# 1. Download from https://openhardwaremonitor.org/downloads/
+# 2. Unzip OpenHardwareMonitor zip file
+# 3. Run OpenHardwareMonitor.exe (keep running in background)
+
 # build React image
 cd docker
 docker compose build
@@ -97,14 +102,18 @@ docker compose build
         .\.venv\Scripts\Activate.ps1
         uvicorn app:app --host 0.0.0.0 --port 8000 --reload
         ```
+2.   **For Windows (if using OpenHardwareMonitor):**
 
-2.  **Start React container (Terminal 2)**
+      - Launch OpenHardwareMonitor.exe (double-click or run from command line)
+
+      - Keep it running in the background
+3.  **Start React container (Terminal 2)**
     ```bash
     cd docker
     docker compose up -d
     ```
 
-3.  **Open the dashboard**
+4.  **Open the dashboard**
     Open your browser to `http://localhost:3000`
 
 ---
@@ -112,6 +121,8 @@ docker compose build
 ## 🛑 Stopping
 
 * **Stop FastAPI:** Press `CTRL‑C` in Terminal 1.
+* **Stop OpenHardwareMonitor:** Close the application window
+
 
 * **Stop and remove container:**
     ```bash
@@ -141,8 +152,9 @@ git push -u origin main
 
 ## 📝 Notes
 * **macOS** requires `sudo` for `powermetrics`. You can add a `NOPASSWD` line in `/etc/sudoers` for password‑less startup if desired.
-* **Windows** CPU‑temp depends on motherboard sensors being exposed via WMI. If they're unsupported, the dashboard gracefully falls back to ambient temperature.
+* **Windows** CPU‑temp depends on motherboard sensors being exposed via WMI and OpenHardwareMonitor (broader hardware support but requires separate download). If they're unsupported, the dashboard gracefully falls back to ambient temperature.
 * The front‑end reads the `REACT_APP_API_ROOT` environment variable at build time. The `docker-compose.yml` file sets this to `http://localhost:8000`.
 
 
 Enjoy your portable, sensor‑aware ThermoSense dashboard! 🚀
+
